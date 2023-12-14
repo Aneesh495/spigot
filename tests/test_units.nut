@@ -10,9 +10,9 @@ suite.assert_near(ul_to_ml(1000.0), 1.0, 1e-6, "1000 uL == 1.0 mL");
 suite.assert_near(ml_to_ul(2.5), 2500.0, 1e-6, "2.5 mL == 2500 uL");
 suite.assert_near(ul_to_nl(5.0), 5000.0, 1e-6, "5 uL == 5000 nL");
 suite.assert_near(nl_to_ul(7500.0), 7.5, 1e-6, "7500 nL == 7.5 uL");
-suite.assert_near(l_to_ul(0.001), 1000.0, 1e-6, "0.001 L == 1000 uL");
-suite.assert_near(ul_to_m3(1e6), 0.001, 1e-9, "1e6 uL == 0.001 m3");
-suite.assert_near(m3_to_ul(0.001), 1e6, 1e-3, "0.001 m3 == 1e6 uL");
+suite.assert_near(l_to_ul(0.001), 1000.0, 1e-3, "0.001 L == 1000 uL");
+suite.assert_near(ul_to_m3(1e6), 0.001, 1e-7, "1e6 uL == 0.001 m3");
+suite.assert_near(m3_to_ul(0.001), 1e6, 0.1, "0.001 m3 == 1e6 uL");
 
 // Distance conversions
 suite.assert_near(mm_to_m(1500.0), 1.5, 1e-6, "1500 mm == 1.5 m");

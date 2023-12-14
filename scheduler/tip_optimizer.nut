@@ -48,6 +48,8 @@ class TipOptimizer {
 
     // Discards tip state when ejected.
     function mark_tip_ejected(channel_idx) {
-        reusable_tip_channels[channel_idx] = null;
+        if (reusable_tip_channels.rawin(channel_idx)) {
+            reusable_tip_channels[channel_idx] = null;
+        }
     }
 }

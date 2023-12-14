@@ -35,7 +35,7 @@ class TestSuite {
     }
 
     function assert_near(actual, expected, tolerance = 1e-5, message = "") {
-        local diff = abs(actual - expected);
+        local diff = fabs((actual - expected).tofloat());
         local desc = (message == "") ? ("Expected ~" + expected + ", got " + actual + " (diff=" + diff + ")") : message;
         assert_true(diff <= tolerance, desc);
     }

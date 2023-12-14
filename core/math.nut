@@ -100,9 +100,9 @@ class Vector3 {
 
     // Equality check with tolerance for floating point imprecision.
     function equals(other, epsilon = 1e-6) {
-        local dx = abs(x - other.x);
-        local dy = abs(y - other.y);
-        local dz = abs(z - other.z);
+        local dx = fabs(x - other.x);
+        local dy = fabs(y - other.y);
+        local dz = fabs(z - other.z);
         return (dx <= epsilon) && (dy <= epsilon) && (dz <= epsilon);
     }
 

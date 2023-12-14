@@ -58,18 +58,26 @@ class Well {
     }
 
     // Withdraws liquid volume from the well.
-    function aspirate(amount_ul) {
+    function aspirate(amount_ul, allow_drain = false) {
         local req = amount_ul.tofloat();
         if (req < 0.0) {
             throw "InvalidVolumeException: Cannot aspirate negative volume.";
         }
-        local avail = volume_ul - geometry.dead_volume_ul;
+        local dead_vol = allow_drain ? 0.0 : geometry.dead_volume_ul;
+        local avail = volume_ul - dead_vol;
         if (req > avail + 1e-5) {
-            throw InsufficientVolumeError(id, req, volume_ul, geometry.dead_volume_ul);
+            throw InsufficientVolumeError(id, req, volume_ul, dead_vol);
         }
         volume_ul -= req;
         if (volume_ul < 0.0) volume_ul = 0.0;
         return req;
+    }
+
+    // Fully empties / evacuates the well to waste during wash cycles.
+    function empty() {
+        local drained = volume_ul;
+        volume_ul = 0.0;
+        return drained;
     }
 
     // Injects liquid volume into the well, mixing solutes.

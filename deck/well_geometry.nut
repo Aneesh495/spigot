@@ -84,9 +84,10 @@ class WellGeometry {
             }
 
             case WellShapeType.PYRAMIDAL_TROUGH: {
-                // V = (1/3) * L * W * h
-                // Approximated for reagent troughs
-                return PI * r * r * height * 0.9;
+                // Trough length ~71.0 mm, width = diameter_mm (~8.0 mm)
+                // Area A = 71.0 * width_mm = 71.0 * 8.0 = 568.0 mm2
+                local trough_area = 71.0 * diameter_mm;
+                return trough_area * height;
             }
 
             default:
@@ -106,6 +107,11 @@ class WellGeometry {
             case WellShapeType.FLAT_CYLINDER: {
                 // h = V / (pi * r^2)
                 return vol / (PI * r * r);
+            }
+
+            case WellShapeType.PYRAMIDAL_TROUGH: {
+                local trough_area = 71.0 * diameter_mm;
+                return vol / trough_area;
             }
 
             case WellShapeType.V_CONICAL: {

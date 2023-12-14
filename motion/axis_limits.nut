@@ -42,8 +42,8 @@ class GantryConstraints {
     z_axis = null; // AxisLimits
 
     constructor() {
-        x_axis = AxisLimits("X", 0.0, 700.0, 600.0, 3000.0, 15000.0);
-        y_axis = AxisLimits("Y", 0.0, 450.0, 500.0, 2500.0, 12000.0);
-        z_axis = AxisLimits("Z", 0.0, 300.0, 300.0, 2000.0, 10000.0);
+        x_axis = AxisLimits("X", 0.0, 750.0, 600.0, 3000.0, 15000.0);
+        y_axis = AxisLimits("Y", 0.0, 500.0, 500.0, 2500.0, 12000.0);
+        z_axis = AxisLimits("Z", 0.0, 400.0, 350.0, 2500.0, 12000.0);
     }
 }
