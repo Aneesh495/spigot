@@ -3,7 +3,7 @@
 SQ ?= sq
 PYTHON ?= python3
 CXX ?= clang++
-CXXFLAGS ?= -std=c++20 -O3 -Wall -Wextra -Iinclude -I/opt/homebrew/include
+CXXFLAGS ?= -std=c++20 -O3 -Wall -Wextra -Inative/include -I/opt/homebrew/include
 LDFLAGS ?= -L/opt/homebrew/lib -lsquirrel -lsqstdlib
 
 all: test
