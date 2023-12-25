@@ -50,12 +50,21 @@ int main(int argc, char* argv[]) {
     }
 
     const char* script_path = argv[1];
-    sq_pushroottable(v);
-    if (SQ_FAILED(sqstd_dofile(v, script_path, SQFalse, SQTrue))) {
+
+    // Load compiled script closure onto stack
+    if (SQ_SUCCEEDED(sqstd_loadfile(v, script_path, SQTrue))) {
+        sq_pushroottable(v); // 'this' target for closure
+        for (int i = 2; i < argc; ++i) {
+            sq_pushstring(v, argv[i], -1);
+        }
+        if (SQ_FAILED(sq_call(v, argc - 1, SQFalse, SQTrue))) {
+            sq_close(v);
+            return 1;
+        }
+    } else {
         sq_close(v);
         return 1;
     }
-    sq_pop(v, 1);
 
     sq_close(v);
     return 0;
