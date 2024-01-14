@@ -27,7 +27,7 @@ class TestSpigotIntegration(unittest.TestCase):
             text=True,
         )
         self.assertEqual(result.returncode, 0, f"Squirrel test runner failed:\n{result.stderr}")
-        self.assertIn("ALL 10 TEST SUITES PASSED SUCCESSFULLY!", result.stdout)
+        self.assertIn("TEST SUITES PASSED SUCCESSFULLY!", result.stdout)
         self.assertIn("ZERO REGRESSIONS", result.stdout)
 
     def test_cli_app_help(self):

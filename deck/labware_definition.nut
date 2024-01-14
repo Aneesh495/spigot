@@ -45,10 +45,20 @@ class Labware {
         _generate_wells();
     }
 
-    function _generate_wells() {
+    function _row_name(r) {
         local letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        if (r < 26) {
+            return letters.slice(r, r + 1);
+        } else {
+            local first = (r / 26) - 1;
+            local second = r % 26;
+            return letters.slice(first, first + 1) + letters.slice(second, second + 1);
+        }
+    }
+
+    function _generate_wells() {
         for (local r = 0; r < rows; r++) {
-            local row_letter = letters.slice(r, r + 1);
+            local row_letter = _row_name(r);
             for (local c = 0; c < cols; c++) {
                 local col_num = c + 1;
                 local well_id = row_letter + col_num;

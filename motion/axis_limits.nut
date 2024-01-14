@@ -28,6 +28,11 @@ class AxisLimits {
         return p;
     }
 
+    function is_within_limits(pos_mm) {
+        local p = pos_mm.tofloat();
+        return (p >= min_pos_mm && p <= max_pos_mm);
+    }
+
     function clamp_position(pos_mm) {
         local p = pos_mm.tofloat();
         if (p < min_pos_mm) return min_pos_mm;

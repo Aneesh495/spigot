@@ -17,7 +17,9 @@ local test_suites = [
     "tests/test_motion.nut",
     "tests/test_scheduler.nut",
     "tests/test_protocols.nut",
-    "tests/test_analysis.nut"
+    "tests/test_analysis.nut",
+    "tests/test_regression_bugs.nut",
+    "tests/test_edge_cases.nut"
 ];
 
 local all_passed = true;
